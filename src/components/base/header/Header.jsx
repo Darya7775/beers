@@ -1,12 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import basket from "/src/assets/basket.svg";
+import * as S from "./style";
 
 function Header() {
 
   return (
-    <header>
-      <Link to="/">logo</Link>
-    </header>
+    <S.HeaderStyle>
+      <S.HeaderContainer>
+        <S.LinkLogo to="/">Beer</S.LinkLogo>
+        <S.LinkCart to="/basket">
+          <img src={basket} alt="basket" width={40} height={40} />
+        </S.LinkCart>
+      </S.HeaderContainer>
+    </S.HeaderStyle>
   );
 }
 
