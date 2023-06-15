@@ -5,7 +5,6 @@ const beersAdapter = createEntityAdapter();
 const initialState = beersAdapter.getInitialState({
   status: "idle",
   count: 1,
-  currentPage: null,
   oneBeerStatus: "idle",
   error: null
 });
