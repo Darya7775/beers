@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Container from "/src/components/ui/container/Container";
+import Container from "/src/components/ui/container";
 import { Title, Inter500 } from "/src/style/mixins";
 
 export const PageBeerStyle = styled.section`

@@ -38,7 +38,7 @@ export const Title = css`
   }
 
   @media(max-width: 47.94em) {
-    font-size: 1.3em;
+    font-size: 1.1em;
   }
 `;
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Container from "/src/components/ui/container/Container";
+import Container from "/src/components/ui/container";
 import { buttonS } from '/src/style/mixins';
 
 export const BasketStyle = styled.section`

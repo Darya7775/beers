@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Container from "/src/components/ui/container/Container";
+import Container from "/src/components/ui/container";
 
 export const BeersSectionStyle = styled.section`
   width: 100%;
@@ -19,7 +19,7 @@ export const BeersListStyle = styled.ul`
   gap: 30px 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
-  @media(max-width: 63.94em) {
+  @media(max-width: 80em) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 

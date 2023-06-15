@@ -4,11 +4,29 @@ const beersAdapter = createEntityAdapter();
 
 const initialState = beersAdapter.getInitialState({
   status: "idle",
+  count: 1,
+  currentPage: null,
+  oneBeerStatus: "idle",
   error: null
 });
 
-export const fetchBeers = createAsyncThunk("beers/fetchBeers", async () => {
-  const response = await fetch("https://api.punkapi.com/v2/beers");
+export const fetchOneBeers = createAsyncThunk("beers/fetchOneBeers", async(id) => {
+  const response = await fetch(`https://api.punkapi.com/v2/beers/${id}`);
+  const data = await response.json();
+
+  if(localStorage.getItem(id)) {
+    data[0].isCart = true;
+  } else {
+    data[0].isCart = false;
+  }
+
+  console.log(data)
+
+  return(data);
+});
+
+export const fetchBeers = createAsyncThunk("beers/fetchBeers", async (currentPage) => {
+  const response = await fetch(`https://api.punkapi.com/v2/beers?page=${currentPage}&per_page=12`);
   const data = await response.json();
 
   function addMarketCart() {
@@ -30,7 +48,6 @@ export const fetchBeers = createAsyncThunk("beers/fetchBeers", async () => {
   }
 
   await addMarketCart();
-  console.log(data);
 
   return data;
 });
@@ -49,7 +66,18 @@ const beersSlice = createSlice({
       for(let i = 0; i < action.payload.length; i++) {
         state.entities[action.payload[i]].isCart = false;
       }
-    }
+    },
+    addCurrentPage(state, action) {
+      state.currentPage = action.payload
+    },
+    addToBasketOneBeer(state, action) {
+      if(state.entities[action.payload]) state.entities[action.payload].isCart = true;
+      state.oneBeer.isCart = true;
+    },
+    removeFromBasketOneBeer(state, action) {
+      if(state.entities[action.payload]) state.entities[action.payload].isCart = false;
+      state.oneBeer.isCart = false;
+    },
   },
   extraReducers(builder) {
     builder
@@ -58,10 +86,23 @@ const beersSlice = createSlice({
       })
       .addCase(fetchBeers.fulfilled, (state, action) => {
         state.status = "succeeded";
+        state.count = Math.ceil(80 / 10);
+        if(state.ids.length !== 0) beersAdapter.removeAll(state, action.payload);
         beersAdapter.upsertMany(state, action.payload);
       })
       .addCase(fetchBeers.rejected, (state, action) => {
         state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(fetchOneBeers.pending, (state) => {
+        state.oneBeerStatus = "loading";
+      })
+      .addCase(fetchOneBeers.fulfilled, (state, action) => {
+        state.oneBeerStatus = "succeeded";
+        state.oneBeer = {...action.payload[0]};
+      })
+      .addCase(fetchOneBeers.rejected, (state, action) => {
+        state.oneBeerStatus = "failed";
         state.error = action.error.message;
       })
   }
@@ -69,10 +110,14 @@ const beersSlice = createSlice({
 
 export default beersSlice.reducer;
 
-export const { addToBasket, removeFromBasket, deletingAllFromTheBasket } = beersSlice.actions;
+export const  { addToBasket, addCurrentPage, removeFromBasket,
+                deletingAllFromTheBasket, addOneBeer, addToBasketOneBeer,
+                removeFromBasketOneBeer
+              } = beersSlice.actions;
 
 export const {
   selectAll: selectAllBeers,
   selectById: selectBeerById,
   selectIds: selectBeerIds
 } = beersAdapter.getSelectors(state => state.beers);
+

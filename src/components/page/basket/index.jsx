@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import CardBeerBasket from "/src/components/blocks/card_beer_basket/CardBeerBasket";
+import CardBeerBasket from "/src/components/blocks/card-beer-basket";
 import { deletingAllFromTheBasket } from "/src/features/beersSlice";
 import { addProducts, selectBeerBasketIds, clearBasket } from "/src/features/basketSlice";
 import * as S from "./style";
@@ -11,21 +11,20 @@ function Basket() {
   const beersStore = useSelector(selectBeerBasketIds);
   const [ count, setCount ] = useState(localStorage.length);
 
-  const getBeersBasket = () => {
-
+  useEffect(() => {
     const beersBasket = [];
-
     if(localStorage.length !== beersStore.length) {
       for(let i = 0; i < localStorage.length; i++) {
         const idBeer = localStorage.key(i);
         const beer = JSON.parse(localStorage.getItem(idBeer));
         beersBasket.push({id: beer.id, name: beer.name, quantity: beer.quantity, price: beer.ibu * beer.quantity, image_url: beer.image_url, ibu: beer.ibu, abv: beer.abv});
       }
-      dispatch(addProducts(beersBasket));
+      dispatch(addProducts(beersBasket)); // переделать localstore перенести в redux
+      console.log('Effect Basket')
     }
-  };
+  });
 
-  getBeersBasket();
+  console.log(3)
 
   return(
     <S.BasketStyle>

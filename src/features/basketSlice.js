@@ -1,7 +1,6 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 
 const basketAdapter = createEntityAdapter();
-console.log(basketAdapter)
 
 const initialState = basketAdapter.getInitialState();
 

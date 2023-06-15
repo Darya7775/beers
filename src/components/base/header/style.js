@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Container  from "/src/components/ui/container/Container";
+import Container  from "/src/components/ui/container";
 import { Link } from "react-router-dom";
 import { PermanentMarker400 } from "/src/style/mixins";
 

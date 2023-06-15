@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectBeerById } from "/src/features/beersSlice";
-import { ButtonActive, Button } from "/src/components/ui/button/Button";
+import { ButtonActive, Button } from "/src/components/ui/button";
 import * as S from "./style";
 
 function CardBeer({ beerId }) {

@@ -1,11 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectAllBeersBasket } from "/src/features/basketSlice";
-import { InputName, InputMail, InputTel, InputContry, InputCity, InputStreet, InputHouse, InputApartment } from "/src/components/ui/input/Input";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectAllBeersBasket, addProducts } from "/src/features/basketSlice";
+import { InputName, InputMail, InputTel, InputContry, InputCity, InputStreet, InputHouse, InputApartment } from "/src/components/ui/input";
 import * as S from "./style";
 
 function Form() {
   const beers = useSelector(selectAllBeersBasket);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const beersBasket = [];
+    if(localStorage.length !== beers.length) {
+      for(let i = 0; i < localStorage.length; i++) {
+        const idBeer = localStorage.key(i);
+        const beer = JSON.parse(localStorage.getItem(idBeer));
+        beersBasket.push({id: beer.id, name: beer.name, quantity: beer.quantity, price: beer.ibu * beer.quantity, image_url: beer.image_url, ibu: beer.ibu, abv: beer.abv});
+      }
+      dispatch(addProducts(beersBasket));
+      console.log('Effect Form')
+    }
+  });
 
   let total = 0;
   return(
