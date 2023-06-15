@@ -59,7 +59,9 @@ const beersSlice = createSlice({
       state.entities[action.payload].isCart = true;
     },
     removeFromBasket(state, action) {
-      state.entities[action.payload].isCart = false;
+      if(state.ids.length !== 0) {
+        state.entities[action.payload].isCart = false;
+      }
     },
     deletingAllFromTheBasket(state, action) {
       if(state.ids.length !== 0) {
