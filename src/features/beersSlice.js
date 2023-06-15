@@ -62,8 +62,10 @@ const beersSlice = createSlice({
       state.entities[action.payload].isCart = false;
     },
     deletingAllFromTheBasket(state, action) {
-      for(let i = 0; i < action.payload.length; i++) {
-        state.entities[action.payload[i]].isCart = false;
+      if(state.ids.length !== 0) {
+        for(let i = 0; i < action.payload.length; i++) {
+          state.entities[action.payload[i]].isCart = false;
+        }
       }
     },
     addCurrentPage(state, action) {

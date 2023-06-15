@@ -17,12 +17,12 @@ function Basket() {
       for(let i = 0; i < localStorage.length; i++) {
         const idBeer = localStorage.key(i);
         const beer = JSON.parse(localStorage.getItem(idBeer));
-        beersBasket.push({id: beer.id, name: beer.name, quantity: beer.quantity, price: beer.ibu * beer.quantity, image_url: beer.image_url, ibu: beer.ibu, abv: beer.abv});
+        beersBasket.push({id: beer.id, name: beer.name, quantity: beer.quantity, price: beer.ibu * beer.quantity, image_url: beer.image_url, ibu: beer.ibu, abv: beer.abv, isCart: beer.isCart});
       }
       dispatch(addProducts(beersBasket)); // переделать localstore перенести в redux
       console.log('Effect Basket')
     }
-  });
+  }, [beersStore]);
 
   console.log(3)
 
