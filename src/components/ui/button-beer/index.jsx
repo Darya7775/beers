@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { removeProduct } from "/src/features/basketSlice";
 import { addToBasketOneBeer, removeFromBasketOneBeer } from "/src/features/beersSlice";
 import * as S from "./style";
 
@@ -11,6 +12,7 @@ export function ButtonActive({ beerId, classB }) {
       type="button"
       onClick={() => {
         dispatch(removeFromBasketOneBeer(beerId));
+        dispatch(removeProduct(beerId));
         localStorage.removeItem(beerId);
       }}>Remove from cart
     </S.ButtonActiveStyle>
