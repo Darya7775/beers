@@ -16,6 +16,7 @@ module.exports = {
       {
         test: /\.cmp.svg$/,
         use: ['@svgr/webpack'],
+        type: 'asset'
       },
       {
         test: /\.(js|jsx)$/,
@@ -23,13 +24,22 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /(.png|((?<!.cmp).svg)|.jpg|.gif|.woff|.woff2|.eot|.ttf|.otf)$/,
-        use: ['file-loader'],
+        test: /\.tsx$/,
+        use: ['ts-loader'],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
   resolve: {
-    extensions: ['.jsx', '.js'],
+    extensions: ['.jsx', '.tsx', '.ts', '.js'],
     alias: {
       src: path.resolve(__dirname, 'src'),
     }
@@ -50,6 +60,13 @@ module.exports = {
     historyApiFallback: true,
     open: true,
     hot: true,
+    proxy: {
+      '/api/**': {
+        target: 'http://example.front.ylab.io',
+        secure: false,
+        changeOrigin: true,
+      }
+    },
   },
   mode: production ? 'production' : 'development'
 };

@@ -1,11 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Container from "/src/components/ui/container";
-
-const styleItem = css`
-  display: grid;
-  grid-template-columns: 40% 30% 30%;
-  justify-items: center;
-`;
 
 export const FormStyle = styled.form`
   width: 100%;
@@ -55,62 +49,6 @@ export const FormTextarea = styled.textarea`
 
   @media(max-width: 47.94em) {
     height: 100px;
-  }
-`;
-
-export const FormListBeers = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  border: 1px dashed #85c6e6;
-
-  @media(max-width: 47.94em) {
-    gap: 5px;
-  }
-`;
-
-export const FormWrapTitle = styled.div`
-  ${styleItem};
-
-  h4 {
-    margin: 0;
-
-    @media(max-width: 47.94em) {
-      line-height: 130%;
-      margin: 0;
-      font-size: 0.9em;
-    }
-  }
-`;
-
-export const FormItem = styled.li`
-  ${styleItem};
-  align-items: center;
-  border-bottom: 1px dashed #85c6e6;
-
-  h3 {
-    justify-self: flex-start;
-
-    @media(max-width: 47.94em) {
-      padding-bottom: 5px;
-      line-height: 130%;
-      margin: 0;
-      font-size: 0.8em;
-    }
-  }
-`;
-
-export const FormWrapPrice = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-
-  background-color: #817abf;
-  color: #ffffff;
-
-  @media(max-width: 47.94em) {
-    padding: 10px;
   }
 `;
 

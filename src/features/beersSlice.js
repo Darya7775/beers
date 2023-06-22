@@ -9,32 +9,38 @@ const initialState = beersAdapter.getInitialState({
   error: null
 });
 
+// запрос данных одного пива
 export const fetchOneBeers = createAsyncThunk("beers/fetchOneBeers", async(id) => {
   const response = await fetch(`https://api.punkapi.com/v2/beers/${id}`);
   const data = await response.json();
 
-  if(localStorage.getItem(id)) {
-    data[0].isCart = true;
-  } else {
-    data[0].isCart = false;
+  function addMarketCart() {
+    let beers = {};
+    if(localStorage.getItem("basket")) {
+      beers = JSON.parse(localStorage.getItem("basket"));
+    }
+
+    if(beers[id]) {
+      data[0].isCart = true;
+    } else {
+      data[0].isCart = false;
+  }
   }
 
-  console.log(data)
+  await addMarketCart();
 
-  return(data);
+  return data;
 });
 
+// запрос пива на одну страницу
 export const fetchBeers = createAsyncThunk("beers/fetchBeers", async (currentPage) => {
   const response = await fetch(`https://api.punkapi.com/v2/beers?page=${currentPage}&per_page=12`);
   const data = await response.json();
 
   function addMarketCart() {
-    const beers = {};
-    if(localStorage.length) {
-      for(let i = 0; i < localStorage.length; i++) {
-        const idBeer = localStorage.key(i);
-        beers[idBeer] = idBeer;
-      }
+    let beers = {};
+    if(localStorage.getItem("basket")) {
+      beers = JSON.parse(localStorage.getItem("basket"));
     }
     for(let i = 0; i < data.length; i++) {
       let id = data[i].id;

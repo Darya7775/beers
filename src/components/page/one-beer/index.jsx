@@ -8,10 +8,6 @@ function OneBeer() {
   const dispatch = useDispatch();
   const activeUrl = useParams();
 
-  const status = useSelector(state => state.beers.oneBeerStatus);
-  const error = useSelector(state => state.beers.error);
-  const beer = useSelector(state => state.beers.oneBeer);
-
   useEffect(() => {
     async function fetchData() {
       await dispatch(fetchOneBeers(activeUrl.id));
@@ -20,8 +16,14 @@ function OneBeer() {
     fetchData();
   }, []);
 
+  const select = useSelector(state => ({
+    status: state.beers.oneBeerStatus,
+    error: state.beers.error,
+    beer: state.beers.oneBeer
+  }));
+
   return(
-    <Beer status={status} error={error} beerId={activeUrl.id} beer={beer}/>
+    <Beer status={select.status} error={select.error} beerId={activeUrl.id} beer={select.beer}/>
   );
 }
 

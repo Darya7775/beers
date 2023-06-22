@@ -6,7 +6,7 @@ import { PermanentMarker400 } from "/src/style/mixins";
 export const HeaderStyle = styled.header`
   width: 100%;
   position: sticky;
-  top: 0;
+  top: -1px;
   left: 0;
   z-index: 1;
   background-color: ${props => props.theme.colorWhite};
@@ -35,6 +35,12 @@ export const LinkLogo = styled(Link)`
   &:hover {
     opacity: 0.5;
   }
+
+  @media(max-width: 47.94em) {
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;
 
 export const LinkCart = styled(Link)`
@@ -43,5 +49,11 @@ export const LinkCart = styled(Link)`
 
   &:hover {
     background-color: #c1bde2;
+  }
+
+  @media(max-width: 47.94em) {
+    &:hover {
+      background-color: #ffffff;
+    }
   }
 `;

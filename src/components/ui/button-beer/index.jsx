@@ -13,7 +13,9 @@ export function ButtonActive({ beerId, classB }) {
       onClick={() => {
         dispatch(removeFromBasketOneBeer(beerId));
         dispatch(removeProduct(beerId));
-        localStorage.removeItem(beerId);
+        const basket = JSON.parse(localStorage.getItem("basket"));
+        delete basket[beerId];
+        localStorage.setItem("basket", JSON.stringify(basket));// вынести в функцию
       }}>Remove from cart
     </S.ButtonActiveStyle>
   );
@@ -23,13 +25,25 @@ export function Button({ beerId, classB }) {
   const dispatch = useDispatch();
   const beer = useSelector(state => state.beers.oneBeer);
 
+  const addLocalStorage = (beerId) => {
+    if(!localStorage.getItem("basket")) {
+      const basket = {};
+      basket[beerId] = {...beer, quantity: 1, price: beer.ibu, isCart: true};
+      localStorage.setItem("basket", JSON.stringify(basket));
+    } else {
+      const basket = JSON.parse(localStorage.getItem("basket"));
+      basket[beerId] = {...beer, quantity: 1, price: beer.ibu, isCart: true};
+      localStorage.setItem("basket", JSON.stringify(basket));
+    }
+  };
+
   return(
     <S.ButtonStyle
       className={classB}
       type="button"
       onClick={() => {
         dispatch(addToBasketOneBeer(beerId));
-        localStorage.setItem(beerId, JSON.stringify({...beer, quantity: 1, price: beer.ibu, isCart: true}));
+        addLocalStorage(beerId);
       }}>Add to cart
     </S.ButtonStyle>
   );

@@ -3,7 +3,6 @@ import basket from "/src/assets/basket.svg";
 import * as S from "./style";
 
 function Header() {
-
   return (
     <S.HeaderStyle>
       <S.HeaderContainer>

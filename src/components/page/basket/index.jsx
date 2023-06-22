@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import CardBeerBasket from "/src/components/blocks/card-beer-basket";
 import { deletingAllFromTheBasket } from "/src/features/beersSlice";
 import { addProducts, selectBeerBasketIds, clearBasket } from "/src/features/basketSlice";
@@ -9,22 +8,19 @@ import * as S from "./style";
 function Basket() {
   const dispatch = useDispatch();
   const beersStore = useSelector(selectBeerBasketIds);
-  const [ count, setCount ] = useState(localStorage.length);
+  console.log("basket")
+  const [ count, setCount ] = useState('');
 
   useEffect(() => {
-    const beersBasket = [];
-    if(localStorage.length !== beersStore.length) {
-      for(let i = 0; i < localStorage.length; i++) {
-        const idBeer = localStorage.key(i);
-        const beer = JSON.parse(localStorage.getItem(idBeer));
-        beersBasket.push({id: beer.id, name: beer.name, quantity: beer.quantity, price: beer.ibu * beer.quantity, image_url: beer.image_url, ibu: beer.ibu, abv: beer.abv, isCart: beer.isCart});
-      }
+    let beersBasket = [];
+    if(localStorage.getItem("basket")) {
+      // парсим корзину, создаем массив объектов-значений, добавляем каждому цену
+      beersBasket = Object.values(JSON.parse(localStorage.getItem("basket"))).map(beer => ({...beer, price: beer.ibu * beer.quantity}));
       dispatch(addProducts(beersBasket)); // переделать localstore перенести в redux
       console.log('Effect Basket')
     }
+    setCount(beersStore.length);
   }, [beersStore]);
-
-  console.log(3)
 
   return(
     <S.BasketStyle>
@@ -43,10 +39,10 @@ function Basket() {
                 <S.ButtonClear
                   type="button"
                   onClick={() => {
-                    localStorage.clear();
+                    localStorage.removeItem("basket");
                     dispatch(deletingAllFromTheBasket(beersStore));
                     dispatch(clearBasket());
-                    setCount(localStorage.length);
+                    setCount(beersStore.length);
                   }}>
                   Clear basket
                 </S.ButtonClear>

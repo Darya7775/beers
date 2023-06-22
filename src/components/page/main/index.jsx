@@ -21,6 +21,7 @@ function Main() {
 
   useInit(async () => {
     await dispatch(fetchBeers(Number(number)))
+    console.log("ef main")
   }, [number]);
 
   return (
@@ -32,3 +33,5 @@ function Main() {
 }
 
 export default Main;
+
+// "main": "index.js", -

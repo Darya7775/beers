@@ -1,16 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
-import PermanentMarkerWoff from "./PermanentMarker-Regular.woff";
-import PermanentMarkerWoff2 from "./PermanentMarker-Regular.woff2";
+import PermanentMarkerWoff from "./permanent-marker-regular.woff";
+import PermanentMarkerWoff2 from "./permanent-marker-regular.woff2";
 
-import InterRegularWoff from "./Inter-Regular.woff";
-import InterRegularWoff2 from "./Inter-Regular.woff2";
+import InterRegularWoff from "./inter-regular.woff";
+import InterRegularWoff2 from "./inter-regular.woff2";
 
-import InterMediumWoff from "./Inter-Medium.woff";
-import InterMediumWoff2 from "./Inter-Medium.woff2";
+import InterMediumWoff from "./inter-medium.woff";
+import InterMediumWoff2 from "./inter-medium.woff2";
 
-import InterBlackWoff from "./Inter-Black.woff";
-import InterBlackWoff2 from "./Inter-Black.woff2";
+import InterBlackWoff from "./inter-black.woff";
+import InterBlackWoff2 from "./inter-black.woff2";
 
 export const GlobalFonts = createGlobalStyle`
   @font-face {

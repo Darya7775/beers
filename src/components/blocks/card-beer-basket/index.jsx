@@ -18,11 +18,16 @@ function CardBeerBasket({ beerId, handler }) {
     }
   };
 
+  // изменение количества
   const updateQuantityLocalStorage = (beerId) => {
-    const beer = JSON.parse(localStorage.getItem(beerId));
+    const basket = JSON.parse(localStorage.getItem("basket"));
+    // находим пиво
+    const beer = basket[beerId];
+    // обновляем количество
     beer.quantity = quantity;
+    // обновляем цену
     beer.price = quantity * beer.ibu;
-    localStorage.setItem(beerId, JSON.stringify(beer));
+    localStorage.setItem("basket", JSON.stringify(basket));
   };
 
   return(
@@ -57,10 +62,12 @@ function CardBeerBasket({ beerId, handler }) {
       <S.CardBeerPrice>Price: {beer.price}$</S.CardBeerPrice>
       <S.CardBeerDelete type="button" aria-label="Delete"
         onClick={() => {
-          localStorage.removeItem(beer.id);
           dispatch(removeFromBasket(beer.id));
           dispatch(removeProduct(beer.id));
           handler();
+          const basket = JSON.parse(localStorage.getItem("basket"));
+          delete basket[beerId];
+          localStorage.setItem("basket", JSON.stringify(basket)); // вынести в функцию
         }}>
       </S.CardBeerDelete>
     </S.CardBeerItem>
