@@ -1,13 +1,14 @@
 import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSignOut } from "/src/features/session-slice";
+import useAppSelector from "../../../hooks/use-selector";
+import useAppDispatch from "../../../hooks/use-dispatch";
+import { fetchSignOut } from "../../../features/session-slice";
 import * as S from "./styled";
 
-function Authorization() {
+const Authorization: React.FC = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const select = useSelector(state => ({
+  const select = useAppSelector(state => ({
     authorization: state.session.authorization,
     name: state.session.name,
   }));

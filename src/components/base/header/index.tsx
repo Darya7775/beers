@@ -1,8 +1,8 @@
 import React from "react";
-import basket from "/src/assets/basket.svg";
+const basket = require("../../../assets/basket.svg") as string;
 import * as S from "./style";
 
-function Header() {
+const Header: React.FC = () => {
   return (
     <S.HeaderStyle>
       <S.HeaderContainer>

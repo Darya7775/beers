@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deletingAllFromTheBasket } from "/src/features/beersSlice";
+import { deletingAllFromTheBasket } from "/src/features/beers-slice";
 import { selectAllBeersBasket, addProducts, clearBasket, selectBeerBasketIds } from "/src/features/basketSlice";
 import ListOrder from "/src/components/blocks/list-order/";
 import Container from "/src/components/ui/container";

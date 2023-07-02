@@ -1,16 +1,16 @@
 import React, { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import App from "/src/components/app/App";
+import App from "./components/app";
 
 import { Provider } from "react-redux";
-import store from "/src/store";
+import store from "./store";
 
 import { ThemeProvider } from "styled-components";
-import { theme } from "/src/components/theme/theme";
+import { theme } from "./components/theme/theme";
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+const container = document.getElementById('root');
+const root = createRoot(container!);
 
 root.render(
   <StrictMode>

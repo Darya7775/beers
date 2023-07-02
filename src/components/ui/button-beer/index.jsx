@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeProduct } from "/src/features/basketSlice";
-import { addToBasketOneBeer, removeFromBasketOneBeer } from "/src/features/beersSlice";
+import { addToBasketOneBeer, removeFromBasketOneBeer } from "/src/features/beers-slice";
 import * as S from "./style";
 
 export function ButtonActive({ beerId, classB }) {

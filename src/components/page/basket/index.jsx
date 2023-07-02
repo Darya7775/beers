@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardBeerBasket from "/src/components/blocks/card-beer-basket";
-import { deletingAllFromTheBasket } from "/src/features/beersSlice";
+import { deletingAllFromTheBasket } from "/src/features/beers-slice";
 import { addProducts, selectBeerBasketIds, clearBasket } from "/src/features/basketSlice";
 import * as S from "./style";
 
 function Basket() {
   const dispatch = useDispatch();
   const beersStore = useSelector(selectBeerBasketIds);
-  console.log("basket")
   const [ count, setCount ] = useState('');
 
   useEffect(() => {

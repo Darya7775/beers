@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { HashRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import Layout from "/src/components/base/layout";
-import Main from "/src/components/page/main";
-import OneBeer from "/src/components/page/one-beer";
-import Basket from "/src/components/page/basket";
-import FormPage from "/src/components/page/form-page";
-import Login from "/src/components/page/login";
-import Profile from "/src/components/page/profile";
+import useAppDispatch from "../../hooks/use-dispatch";
+import Layout from "../base/layout";
+import Main from "../page/main";
+import OneBeer from "../page/one-beer";
+import Basket from "../page/basket";
+import FormPage from "../page/form-page";
+import Login from "../page/login";
+import Profile from "../page/profile";
 import { GlobalStyles } from "./style";
-import { GlobalFonts } from "/src/fonts/fonts";
-import { fetchCheck } from "/src/features/session-slice";
-import ScrollToTop from "/src/components/ui/scroll-to-top";
+import { GlobalFonts } from "../../fonts/fonts";
+import { fetchCheck } from "../../features/session-slice";
+import ScrollToTop from "../ui/scroll-to-top";
 
-export default function App() {
+const App: React.FC = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     async function fetch() {
@@ -47,4 +47,6 @@ export default function App() {
       </Routes>
     </HashRouter>
   );
-}
+};
+
+export default App;

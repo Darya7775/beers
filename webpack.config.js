@@ -1,22 +1,22 @@
+/*global require, module, __dirname, process*/
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  entry: { main: path.resolve(__dirname, './src/index.js') },
+  entry: { main: path.resolve(__dirname, './src/index.tsx') },
   output: {
     path: path.resolve(__dirname, './build'),
     filename: production ? '[name].[contenthash].js' : '[name].js',
+    clean: true,
   },
   module: {
     rules: [
       {
         test: /\.cmp.svg$/,
         use: ['@svgr/webpack'],
-        type: 'asset'
       },
       {
         test: /\.(js|jsx)$/,
@@ -24,7 +24,7 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.tsx$/,
+        test: /\.(ts|tsx)$/,
         use: ['ts-loader'],
         exclude: /node_modules/,
       },
@@ -56,17 +56,17 @@ module.exports = {
       directory: path.join(__dirname, 'public'),
     },
     compress: true,
-    port: 3001,
+    port: 8010,
     historyApiFallback: true,
-    open: true,
-    hot: true,
     proxy: {
-      '/api/**': {
+      '/api/': {
         target: 'http://example.front.ylab.io',
         secure: false,
         changeOrigin: true,
       }
     },
+    open: true,
+    hot: true,
   },
   mode: production ? 'production' : 'development'
 };

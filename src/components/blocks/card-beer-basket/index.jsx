@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromBasket } from "/src/features/beersSlice";
+import { removeFromBasket } from "/src/features/beers-slice";
 import { incrementBeers, decrementBeers, updatePrice, removeProduct, selectBeerBasketById } from "/src/features/basketSlice";
 import * as S from "./style";
 

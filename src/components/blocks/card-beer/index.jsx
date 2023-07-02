@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectBeerById } from "/src/features/beersSlice";
+import { selectBeerById } from "/src/features/beers-slice";
 import { ButtonActive, Button } from "/src/components/ui/button";
 import * as S from "./style";
 

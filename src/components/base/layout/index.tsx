@@ -1,10 +1,10 @@
 import React from "react";
 import Header from "../header";
 import Footer from "../footer";
-import Authorization from "/src/components/base/authorization";
+import Authorization from "../authorization";
 import { Outlet } from "react-router-dom";
 
-function Layout() {
+const Layout: React.FC = () => {
   return (
     <>
       <Authorization />
