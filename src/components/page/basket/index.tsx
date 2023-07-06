@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import CardBeerBasket from "/src/components/blocks/card-beer-basket";
-import { deletingAllFromTheBasket } from "/src/features/beers-slice";
-import { addProducts, selectBeerBasketIds, clearBasket } from "/src/features/basketSlice";
+import useAppSelector from "../../../hooks/use-selector";
+import useAppDispatch from "../../../hooks/use-dispatch";
+import CardBeerBasket from "../../containers/card-beer-basket";
+import { deletingAllFromTheBasket } from "../../../features/beers-slice";
+import { addProducts, clearBasket } from "../../../features/basket-slice";
 import * as S from "./style";
 
-function Basket() {
-  const dispatch = useDispatch();
-  const beersStore = useSelector(selectBeerBasketIds);
-  const [ count, setCount ] = useState('');
+interface Options {
+  [key: string]: {
+    ibu: number,
+    quantity: number
+  }
+};
+
+interface Beer {
+  price: number,
+};
+
+const Basket: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const beersStore = useAppSelector(state => state.basket.ids);
+  const [ count, setCount ] = useState(0);
 
   useEffect(() => {
-    let beersBasket = [];
     if(localStorage.getItem("basket")) {
       // парсим корзину, создаем массив объектов-значений, добавляем каждому цену
-      beersBasket = Object.values(JSON.parse(localStorage.getItem("basket"))).map(beer => ({...beer, price: beer.ibu * beer.quantity}));
+      const parse = JSON.parse(localStorage.getItem("basket") as string) as Options;
+      const beersBasket = Object.values(parse).map<Beer>((beer) => ({...beer, price: beer.ibu * beer.quantity}));
       dispatch(addProducts(beersBasket)); // переделать localstore перенести в redux
       console.log('Effect Basket')
     }

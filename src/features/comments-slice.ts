@@ -1,24 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { PayloadAction } from '@reduxjs/toolkit'
 
-type MyData =  {
+export interface Comment {
   postId: number,
   id: number,
   name: string,
   email: string,
   body: string
-}[];
+};
+
+type MyData = Comment[];
 
 type FetchingStatus = "idle" | "loading" | "succeeded" | "failed";
 
 interface ExtendedEntityAdapterState {
   status: FetchingStatus
-  comments: {
-    postId: number,
-    id: number,
-    name: string,
-    email: string,
-    body: string
-  }[],
+  comments: Comment[],
   error: string
 };
 
@@ -37,7 +34,12 @@ export const fetchComments = createAsyncThunk('comments/fetchComments', async (b
 const commentsSlice = createSlice({
   name: 'comments',
   initialState,
-  reducers: {},
+  reducers: {
+    addComment: (state, action: PayloadAction<Comment>) => {
+      console.log(action.payload)
+      state.comments.push(action.payload);
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchComments.pending, (state) => {
@@ -55,3 +57,5 @@ const commentsSlice = createSlice({
 });
 
 export default commentsSlice.reducer;
+
+export const { addComment } = commentsSlice.actions;

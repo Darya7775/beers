@@ -26,3 +26,7 @@ export const CommentsTitle = styled.h2`
     margin-bottom: 5px;
   }
 `;
+
+export const CommentsItem = styled.li`
+  overflow-wrap: break-word;
+`;

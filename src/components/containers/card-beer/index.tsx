@@ -1,11 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectBeerById } from "/src/features/beers-slice";
-import { ButtonActive, Button } from "/src/components/ui/button";
+import useAppSelector from "../../../hooks/use-selector";
+import { selectBeerById } from "../../../features/beers-slice";
+import { ButtonActive, Button } from "../../ui/button";
 import * as S from "./style";
 
-function CardBeer({ beerId }) {
-  const beer = useSelector(state => selectBeerById(state, beerId));
+interface Props {
+  beerId: number
+}
+
+interface Beer {
+  image_url: string,
+  name: string,
+  isCart: boolean,
+  abv: number,
+  ibu: number
+}
+
+const CardBeer: React.FC<Props> = ({ beerId }: Props) => {
+  const beer = useAppSelector(state => selectBeerById(state, beerId)) as Beer;
 
   let button;
 

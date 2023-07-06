@@ -11,7 +11,7 @@ const Main: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const select = useAppSelector((state) => ({
-    beersIds: selectBeerIds(state),
+    beersIds: state.beers.ids,
     status: state.beers.status,
     error: state.beers.error,
     count: state.beers.count

@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "/src/features/user-slice";
-import Spinner from "/src/components/ui/spinner";
-import ProfileCard from "/src/components/blocks/profile-card";
+import useAppSelector from "../../../hooks/use-selector";
+import useAppDispatch from "../../../hooks/use-dispatch";
+import { fetchUser } from "../../../features/user-slice";
+import Spinner from "../../ui/spinner";
+import ProfileCard from "../../blocks/profile-card";
 import { Navigate } from "react-router-dom";
 
-function Profile() {
-  const dispatch = useDispatch();
+const Profile: React.FC = () => {
+  const dispatch = useAppDispatch();
 
-  const select = useSelector(state => ({
+  const select = useAppSelector(state => ({
     token: state.session.token,
     authorization: state.session.authorization,
     status: state.user.status,

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // получение данных пользователя
-export const fetchUser = createAsyncThunk("user/data", async (token) => {
+export const fetchUser = createAsyncThunk("user/data", async (token: string) => {
   const response = await fetch('/api/v1/users/self', {
     method: 'GET',
     headers: {
@@ -15,14 +15,28 @@ export const fetchUser = createAsyncThunk("user/data", async (token) => {
   return result;
 });
 
+type FetchingStatus = "idle" | "loading" | "succeeded" | "failed";
+
+interface ExtendedEntityAdapterState {
+  status: FetchingStatus,
+  name: string,
+  telephone: string,
+  email: string,
+  error: string | undefined
+};
+
+const initialState: ExtendedEntityAdapterState = {
+  status: "idle",
+  name: "",
+  telephone: "",
+  email: "",
+  error: ""
+};
+
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    status: "idle",
-    name: "",
-    telephone: "",
-    email: ""
-  },
+  initialState,
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchUser.pending, (state) => {
@@ -41,7 +55,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload.error.message;
+        state.error = action.error.message;
       })
   }
 });

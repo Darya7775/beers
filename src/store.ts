@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import beersReducer from "./features/beers-slice";
-import basketReducer from "./features/basketSlice";
+import basketReducer from "./features/basket-slice";
 import sessionReducer from "./features/session-slice";
 import userReducer from "./features/user-slice";
 import commentsReducer from "./features/comments-slice";

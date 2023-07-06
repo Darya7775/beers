@@ -1,8 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+type DataAuth =  {
+  error?: {message: string},
+  result?: {
+    token: string,
+    user: {
+      profile: {
+        name: string
+      }
+    }
+  }
+};
+
 // запрос на авторизацию
-export const fetchAuthorization = createAsyncThunk("session/authorization", async (body) => {
-  const response = await fetch('/api/v1/users/sign?fields=token%2Cprofile(name)',{
+export const fetchAuthorization = createAsyncThunk("session/authorization", async (body: {login: string, password: string, remember: boolean}) => {
+  const response = await fetch('/api/v1/users/sign?fields=token%2Cprofile(name)', {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -10,20 +22,32 @@ export const fetchAuthorization = createAsyncThunk("session/authorization", asyn
     body: JSON.stringify(body),
   });
 
-  const result = await response.json();
+  const result = await response.json() as DataAuth;
 
   if(result.result) {
     localStorage.setItem('token', result.result.token);
-  } else {
-    localStorage.removeItem('token');
+    return result;
   }
 
+  localStorage.removeItem('token');
   return result;
 });
 
+type DataCheck =  {
+  token: string,
+  error?: {message: string}
+  result: {
+    result: {
+      profile: {
+        name: string
+      }
+    }
+  }
+};
+
 // запрос на валидность токена
 export const fetchCheck = createAsyncThunk("session/check", async() => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   let result;
   if(token) {
@@ -39,13 +63,13 @@ export const fetchCheck = createAsyncThunk("session/check", async() => {
     result = "session no";
   }
 
-  return {result, token};
+  return {result, token} as DataCheck;
 })
 
 // запрос на выход
 export const fetchSignOut = createAsyncThunk("session/signOut", async () => {
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token") as string;
 
   const response = await fetch('/api/v1/users/sign', {
     method: 'DELETE',
@@ -66,14 +90,28 @@ export const fetchSignOut = createAsyncThunk("session/signOut", async () => {
   return result;
 });
 
+type FetchingStatus = "idle" | "loading" | "succeeded" | "failed";
+
+interface ExtendedEntityAdapterState {
+  authorization: boolean,
+  token: string | undefined,
+  status: FetchingStatus,
+  name: string | undefined,
+  error: string | undefined
+};
+
+const initialState: ExtendedEntityAdapterState = {
+  authorization: false,
+  token: "",
+  status: "idle",
+  name: "",
+  error: ""
+};
+
 const sessionSlice = createSlice({
   name: "session",
-  initialState: {
-    authorization: false,
-    token: "",
-    status: "idle",
-    name: ""
-  },
+  initialState,
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchAuthorization.pending, (state) => {
@@ -85,14 +123,14 @@ const sessionSlice = createSlice({
           state.error = action.payload.error.message;
         } else {
           state.authorization = true;
-          state.token = action.payload.result.token;
-          state.name = action.payload.result.user.profile.name;
+          state.token = action.payload.result?.token;
+          state.name = action.payload.result?.user.profile.name;
           state.error = "";
         }
       })
       .addCase(fetchAuthorization.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload.error.message;
+        state.error = action.error.message;
       })
       .addCase(fetchSignOut.pending, (state) => {
         state.status = "loading";
@@ -107,7 +145,7 @@ const sessionSlice = createSlice({
       })
       .addCase(fetchSignOut.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload.error.message;
+        state.error = action.error.message;
       })
       .addCase(fetchCheck.pending, (state) => {
         state.status = "loading";
@@ -125,7 +163,7 @@ const sessionSlice = createSlice({
       })
       .addCase(fetchCheck.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload.error.message;
+        state.error = action.error.message;
       })
   }
 });

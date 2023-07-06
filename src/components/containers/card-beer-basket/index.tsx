@@ -1,12 +1,29 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromBasket } from "/src/features/beers-slice";
-import { incrementBeers, decrementBeers, updatePrice, removeProduct, selectBeerBasketById } from "/src/features/basketSlice";
+import useAppSelector from "../../../hooks/use-selector";
+import useAppDispatch from "../../../hooks/use-dispatch";
+import { removeFromBasket } from "../../../features/beers-slice";
+import { incrementBeers, decrementBeers, updatePrice, removeProduct, selectBeerBasketById } from "../../../features/basket-slice";
 import * as S from "./style";
 
-function CardBeerBasket({ beerId, handler }) {
-  const dispatch = useDispatch();
-  const beer = useSelector(state => selectBeerBasketById(state, beerId));
+interface Props {
+  beerId: number,
+  handler: () => void
+};
+
+interface Beer {
+  id: number,
+  image_url: string,
+  name: string,
+  isCart: boolean,
+  abv: number,
+  ibu: number,
+  quantity: number,
+  price: number
+}
+
+const CardBeerBasket: React.FC<Props> = (props: Props) => {
+  const dispatch = useAppDispatch();
+  const beer = useAppSelector(state => selectBeerBasketById(state, props.beerId)) as Beer;
 
   let [ quantity, setQuantity ] = useState(beer.quantity);
 
@@ -19,8 +36,8 @@ function CardBeerBasket({ beerId, handler }) {
   };
 
   // изменение количества
-  const updateQuantityLocalStorage = (beerId) => {
-    const basket = JSON.parse(localStorage.getItem("basket"));
+  const updateQuantityLocalStorage = (beerId: number) => {
+    const basket = JSON.parse(localStorage.getItem("basket") as string);
     // находим пиво
     const beer = basket[beerId];
     // обновляем количество
@@ -42,9 +59,9 @@ function CardBeerBasket({ beerId, handler }) {
             type="button"
             onClick={() => {
               decrement();
-              dispatch(decrementBeers(beerId));
-              dispatch(updatePrice({id: beerId, price: quantity * beer.ibu}));
-              updateQuantityLocalStorage(beerId);
+              dispatch(decrementBeers(props.beerId));
+              dispatch(updatePrice({id: props.beerId, price: quantity * beer.ibu}));
+              updateQuantityLocalStorage(props.beerId);
             }}
           >-</S.CardBeerButton>
           <span>{beer.quantity}</span>
@@ -52,9 +69,9 @@ function CardBeerBasket({ beerId, handler }) {
             type="button"
             onClick={() => {
               setQuantity(++quantity);
-              dispatch(incrementBeers(beerId));
-              dispatch(updatePrice({id: beerId, price: quantity * beer.ibu}));
-              updateQuantityLocalStorage(beerId);
+              dispatch(incrementBeers(props.beerId));
+              dispatch(updatePrice({id: props.beerId, price: quantity * beer.ibu}));
+              updateQuantityLocalStorage(props.beerId);
             }}
           >+</S.CardBeerButton>
         </S.CardBeerWparButtons>
@@ -64,9 +81,9 @@ function CardBeerBasket({ beerId, handler }) {
         onClick={() => {
           dispatch(removeFromBasket(beer.id));
           dispatch(removeProduct(beer.id));
-          handler();
-          const basket = JSON.parse(localStorage.getItem("basket"));
-          delete basket[beerId];
+          props.handler();
+          const basket = JSON.parse(localStorage.getItem("basket") as string);
+          delete basket[props.beerId];
           localStorage.setItem("basket", JSON.stringify(basket)); // вынести в функцию
         }}>
       </S.CardBeerDelete>

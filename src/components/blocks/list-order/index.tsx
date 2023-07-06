@@ -1,7 +1,15 @@
 import React from "react";
 import * as S from "./style";
 
-function ListOrder(props) {
+interface Props {
+  beers: {
+    price: number,
+    name: string,
+    quantity: number
+  }[]
+};
+
+const ListOrder: React.FC<Props> = (props: Props) => {
   let total = 0;
   return(
     <>

@@ -1,7 +1,15 @@
 import React from "react";
 import * as S from "./style";
 
-function Form(props) {
+interface Props {
+  children: JSX.Element,
+  action?: string,
+  method?: string,
+  onSubmit: (e: React.SyntheticEvent) => void,
+  textButton: string
+};
+
+const Form: React.FC<Props> = (props: Props) => {
   return(
     <S.FormStyle action={props.action} method={props.method} onSubmit={props.onSubmit}>
       <S.FormContainer>

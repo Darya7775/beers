@@ -4,12 +4,24 @@ import type { RootState } from '../store';
 
 type FetchingStatus = "idle" | "loading" | "succeeded" | "failed";
 
+type OneBeer = {
+    isCart: boolean,
+    image_url: string,
+    name: string,
+    abv: number,
+    first_brewed: string,
+    description: string,
+    ingredients: {
+      malt: {name: string}[],
+      hops: {name: string}[],
+      yeast: string
+    }
+}
+
 interface ExtendedEntityAdapterState {
-  status: FetchingStatus
+  status: FetchingStatus,
   count: number,
-  oneBeer: {
-    isCart: boolean
-  },
+  oneBeer: OneBeer,
   oneBeerStatus: FetchingStatus,
   currentPage: number,
   error: string | undefined,
@@ -25,9 +37,9 @@ interface Options {
   [key: string]: object
 };
 
-type MyData =  {
-    isCart: boolean,
-    id: number
+type MyData = {
+  isCart: boolean,
+  id: number
 }[];
 
 const initialState: ExtendedEntityAdapterState = {
@@ -36,7 +48,17 @@ const initialState: ExtendedEntityAdapterState = {
   ids: [],
   count: 1,
   oneBeer: {
-    isCart: false
+    isCart: false,
+    image_url: "",
+    name: "",
+    abv: 0,
+    first_brewed: "",
+    description: "",
+    ingredients: {
+      malt: [],
+      hops: [],
+      yeast: ""
+    }
   },
   oneBeerStatus: "idle",
   currentPage: 1,
@@ -50,7 +72,7 @@ beersAdapter.getInitialState(initialState);
 // запрос данных одного пива
 export const fetchOneBeers = createAsyncThunk("beers/fetchOneBeers", async(id: string) => {
   const response = await fetch(`https://api.punkapi.com/v2/beers/${id}`);
-  const data = await response.json() as MyData;
+  const data = await response.json() as OneBeer[];
 
   function addMarketCart() {
     let beers = {} as Options;
@@ -144,7 +166,7 @@ const beersSlice = createSlice({
       .addCase(fetchOneBeers.pending, (state) => {
         state.oneBeerStatus = "loading";
       })
-      .addCase(fetchOneBeers.fulfilled, (state, action: PayloadAction<{isCart: boolean}[]>) => {
+      .addCase(fetchOneBeers.fulfilled, (state, action: PayloadAction<Array<OneBeer>>) => {
         state.oneBeerStatus = "succeeded";
         state.oneBeer = {...action.payload[0]};
       })
@@ -167,4 +189,3 @@ export const {
   selectById: selectBeerById,
   selectIds: selectBeerIds
 } = beersAdapter.getSelectors<RootState>((state) => state.beers);
-

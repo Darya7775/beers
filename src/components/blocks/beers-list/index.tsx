@@ -1,9 +1,15 @@
 import React from "react";
-import Spinner from "/src/components/ui/spinner";
-import CardBeer from "/src/components/blocks/card-beer";
+import Spinner from "../../ui/spinner";
+import CardBeer from "../../containers/card-beer";
 import * as S from "./style";
 
-function BeersList(props) {
+interface Props {
+  error: string | undefined,
+  status: string,
+  beersIds: number[]
+}
+
+const BeersList: React.FC<Props>= (props: Props) => {
 
   let content;
 
@@ -27,7 +33,6 @@ function BeersList(props) {
         </S.BeersListStyle>
       </S.BeersContainer>
     </S.BeersSectionStyle>
-
   );
 }
 

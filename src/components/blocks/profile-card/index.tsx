@@ -1,7 +1,13 @@
 import React from "react";
 import * as S from "./style";
 
-function ProfileCard(props) {
+interface Props {
+  name: string,
+  email: string,
+  telephone: string
+};
+
+const ProfileCard: React.FC<Props> = (props: Props) => {
   return(
     <S.ProfileSection>
       <S.ProfileContainer>
