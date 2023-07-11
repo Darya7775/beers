@@ -1,14 +1,5 @@
 import styled from "styled-components";
-import Container  from "/src/components/ui/container";
 import { Link } from "react-router-dom";
-
-export const AuthorizationContainer = styled(Container)`
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  display: flex;
-  justify-content: end;
-`;
 
 export const Wrapper = styled.div`
   display: flex;

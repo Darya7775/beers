@@ -1,0 +1,65 @@
+{
+  "title": "Beer",
+  "login": "Логин",
+  "password": "Пароль",
+  "quantity": "Количество",
+  "price": "Цена",
+  "alcohol": "Алкоголь",
+  "total": "Итого",
+
+  "authorization.singOut": "Выйти",
+  "authorization.signIn": "Авторизоваться",
+
+  "footer.copyright": "Copyright",
+
+  "beer.dateOfFirstBrew": "Дата первой варки",
+  "beer.ingredients": "Ингредиенты",
+  "beer.malt": "Солод",
+  "beer.hops": "Хмель",
+  "beer.yeast": "Дрожжи",
+
+  "comments.title": "Отзывы",
+  "comments.noReviews": "Нет отзывов",
+  "comments.leaveFeedback": "Оставить отзыв",
+  "comments.text": "Текст",
+  "comments.name": "Имя",
+  "comments.send": "Отправить",
+
+  "listOrder.title": "Ваш заказ",
+  "listOrder.beer": "Пиво",
+
+  "profile.title": "Профиль",
+  "profile.name": "Имя",
+  "profile.eMail": "E-mail",
+  "profile.telephone": "Телефон",
+
+  "test.forTheTest": "Для теста",
+  "test.text": "не работает через github pages, только локально",
+
+  "basket.clearBasket": "Очистить корзину",
+  "basket.checkout": "Оформить",
+  "basket.cartIsEmpty": "Корзина пуста!",
+
+  "formPage.buyerData": "Данные покупателя",
+  "formPage.addressOfTheRecipient": "Адрес получателя",
+  "formPage.comments": "Комментарии",
+  "formPage.paymentMethods": "Способы оплаты",
+  "formPage.cashPayment": "Наличный расчет",
+  "formPage.agreeProcessingPersonalData": "Я согласен на обработку моих персональных данных",
+  "formPage.placeAnOrder": "Офорсмить заказ",
+  "formPage.orderCompleted": "Заказ оформлен",
+  "formPage.signIn": "Войдите",
+  "formPage.placeOrder": "чтобы оформить заказ",
+
+  "button.removeFromCart": "Удалить из корзины",
+  "button.addToCart": "Добавить в корзину",
+
+  "input.name": "Имя",
+  "input.eMail": "E-mail",
+  "input.numberPattern": "+7(XXX) XXX-XX-XX",
+  "input.country": "Страна",
+  "input.city": "Город",
+  "input.street": "Улица",
+  "input.house": "Дом",
+  "input.apartment": "Квартира"
+}

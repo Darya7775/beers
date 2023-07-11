@@ -4,9 +4,6 @@
     "allowJs": true,
     // ограничение взаимодействия
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    // чувстыительночть к регистру
-    "forceConsistentCasingInFileNames": true,
     "noEmit": false,
     "jsx": "react-jsx",
     // указывает где будет создан файл index.js

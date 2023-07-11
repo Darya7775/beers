@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import useAppSelector from "../../../hooks/use-selector";
 import useAppDispatch from "../../../hooks/use-dispatch";
+import useTranslate from "../../../hooks/use-translate";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchAuthorization } from "../../../features/session-slice";
 import InputLogin from "../../ui/input-login";
@@ -8,6 +9,7 @@ import Form from "../../blocks/form";
 import Test from "../../blocks/test";
 
 const Login: React.FC = () => {
+  const {t} = useTranslate();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -51,10 +53,10 @@ const Login: React.FC = () => {
 
   return(
     <>
-      <Form action="/api/v1/users/sign" method="POST" onSubmit={callbacks.onSubmit} textButton="Sign In">
+      <Form action="/api/v1/users/sign" method="POST" onSubmit={callbacks.onSubmit} textButton={t("authorization.signIn")}>
         <>
-          <InputLogin type="text" value={name} text="Login" onChange={callbacks.onChangeLogin} />
-          <InputLogin type="password" value={password} text="Password" onChange={callbacks.onChangePassword}/>
+          <InputLogin type="text" value={name} text={t("login")} onChange={callbacks.onChangeLogin} />
+          <InputLogin type="password" value={password} text={t("password")} onChange={callbacks.onChangePassword}/>
           {select.error || <div>{select.error}</div>}
         </>
       </Form>

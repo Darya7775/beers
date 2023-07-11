@@ -1,4 +1,5 @@
 import React from "react";
+import useTranslate from "../../../hooks/use-translate";
 import * as S from "./style";
 
 interface Props {
@@ -10,14 +11,15 @@ interface Props {
 };
 
 const ListOrder: React.FC<Props> = (props: Props) => {
+  const {t} = useTranslate();
   let total = 0;
   return(
     <>
-      <h3>Your order</h3>
+      <h3>{t("listOrder.title")}</h3>
       <S.WrapTitle>
-        <h4>Beer</h4>
-        <h4>Quantity</h4>
-        <h4>Price</h4>
+        <h4>{t("listOrder.beer")}</h4>
+        <h4>{t("quantity")}</h4>
+        <h4>{t("price")}</h4>
       </S.WrapTitle>
       <S.ListOrderBeers>
         {props.beers.map((beer, index) => {
@@ -32,7 +34,7 @@ const ListOrder: React.FC<Props> = (props: Props) => {
         })}
       </S.ListOrderBeers>
       <S.WrapPrice>
-        <span>Total:</span>
+        <span>{t("total")}:</span>
         <span>{total}$</span>
       </S.WrapPrice>
     </>

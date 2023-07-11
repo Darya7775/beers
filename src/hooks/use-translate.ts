@@ -6,6 +6,7 @@ import useServices from "./use-services";
  */
 export default function useTranslate() {
   const services = useServices();
+
   const [lang, setLanguage] = useState(services.translate.defaultLanguage);
 
   const unsubscribe = useMemo(() => {
@@ -14,15 +15,13 @@ export default function useTranslate() {
     });
   }, []);
 
-  console.log(services.translate)
+  useLayoutEffect(() => {unsubscribe}, [unsubscribe]);
 
-  useLayoutEffect(() => unsubscribe, [unsubscribe]);
-
-  const setLang = useCallback((language) => {
+  const setLang = useCallback((language: string) => {
     services.translate.installationLanguage(language);
   }, []);
 
-  const t = useCallback((text, plural) => {
+  const t = useCallback((text: string, plural?: string) => {
     return services.translate.t(text, plural, lang);
   }, [services.translate.defaultLanguage]);
 

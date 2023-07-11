@@ -1,0 +1,65 @@
+{
+  "title": "Beer",
+  "login": "Login",
+  "password": "Password",
+  "quantity": "Quantity",
+  "price": "Price",
+  "alcohol": "Alcohol",
+  "total": "Total",
+
+  "authorization.singOut": "Sing Out",
+  "authorization.signIn": "Sign In",
+
+  "footer.copyright": "Copyright",
+
+  "beer.dateOfFirstBrew": "Date of first brew",
+  "beer.ingredients": "Ingredients",
+  "beer.malt": "Malt",
+  "beer.hops": "Hops",
+  "beer.yeast": "Yeast",
+
+  "comments.title": "Reviews",
+  "comments.noReviews": "No reviews",
+  "comments.leaveFeedback": "Leave feedback",
+  "comments.text": "Text",
+  "comments.name": "Name",
+  "comments.send": "Send",
+
+  "listOrder.title": "Your order",
+  "listOrder.beer": "Beer",
+
+  "profile.title": "Profile",
+  "profile.name": "Name",
+  "profile.eMail": "E-mail",
+  "profile.telephone": "Telephone",
+
+  "test.forTheTest": "For the test",
+  "test.text": "does not work in github pages, only locally",
+
+  "basket.clearBasket": "Clear basket",
+  "basket.checkout": "Checkout",
+  "basket.cartIsEmpty": "Сart is empty!",
+
+  "formPage.buyerData": "Buyer data",
+  "formPage.addressOfTheRecipient": "Address of the recipient",
+  "formPage.comments": "Comments",
+  "formPage.paymentMethods": "Payment methods",
+  "formPage.cashPayment": "Cash payment",
+  "formPage.agreeProcessingPersonalData": "I agree to the processing of my personal data",
+  "formPage.placeAnOrder": "Place an order",
+  "formPage.orderCompleted": "Order completed",
+  "formPage.signIn": "Sign in",
+  "formPage.placeOrder": "to place an order",
+
+  "button.removeFromCart": "Remove from cart",
+  "button.addToCart": "Add to cart",
+
+  "input.name": "Name",
+  "input.eMail": "E-mail",
+  "input.numberPattern": "+1 XXX-XXX-XXXX",
+  "input.country": "Country",
+  "input.city": "City",
+  "input.street": "Street",
+  "input.house": "House",
+  "input.apartment": "Apartment"
+}

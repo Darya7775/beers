@@ -1,0 +1,65 @@
+{
+  "title": "Bier",
+  "login": "Anmeldung",
+  "password": "Passwort",
+  "quantity": "Menge",
+  "price": "Preis",
+  "alcohol": "Alkohol",
+  "total": "Gesamt",
+
+  "authorization.singOut": "Hinausgehen",
+  "authorization.signIn": "Anmeldung",
+
+  "footer.copyright": "Copyright",
+
+  "beer.dateOfFirstBrew": "Datum des ersten Aufgusses",
+  "beer.ingredients": "Zutaten",
+  "beer.malt": "Malz",
+  "beer.hops": "Hop",
+  "beer.yeast": "Hefe",
+
+  "comments.title": "Rezensionen",
+  "comments.noReviews": "Keine Bewertungen",
+  "comments.leaveFeedback": "Hinterlasse Kommentar",
+  "comments.text": "Text",
+  "comments.name": "Name",
+  "comments.send": "Schicken",
+
+  "listOrder.title": "Ihre Bestellung",
+  "listOrder.beer": "Bier",
+
+  "profile.title": "Profil",
+  "profile.name": "Name",
+  "profile.eMail": "E-mail",
+  "profile.telephone": "Telefon",
+
+  "test.forTheTest": "Für den Test",
+  "test.text": "klappt nicht durch github pages, nur lokal",
+
+  "basket.clearBasket": "Leerer Müll",
+  "basket.checkout": "Design",
+  "basket.cartIsEmpty": "Einkaufswagen ist leer!",
+
+  "formPage.buyerData": "Käuferdaten",
+  "formPage.addressOfTheRecipient": "Adresse des Empfängers",
+  "formPage.comments": "Kommentare",
+  "formPage.paymentMethods": "Zahlungsarten",
+  "formPage.cashPayment": "Kasse",
+  "formPage.agreeProcessingPersonalData": "Ich stimme der Verarbeitung meiner personenbezogenen Daten zu",
+  "formPage.placeAnOrder": "Eine Bestellung aufgeben",
+  "formPage.orderCompleted": "Bestellung wird bearbeitet",
+  "formPage.signIn": "Anmeldung",
+  "formPage.placeOrder": "eine Bestellung aufgeben",
+
+  "button.removeFromCart": "Aus dem Warenkorb entfernen",
+  "button.addToCart": "Zum Warenkorb hinzufügen",
+
+  "input.name": "Name",
+  "input.eMail": "E-mail",
+  "input.numberPattern": "+49-XXXX-XXXXXXX",
+  "input.country": "Ein Land",
+  "input.city": "Die Stadt",
+  "input.street": "Straße",
+  "input.house": "Haus",
+  "input.apartment": "Wohnung"
+}

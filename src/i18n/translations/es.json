@@ -1,0 +1,65 @@
+{
+  "title": "Cerveza",
+  "login": "Acceso",
+  "password": "Contraseña",
+  "quantity": "Cantidad",
+  "price": "Precio",
+  "alcohol": "Alcohol",
+  "total": "Total",
+
+  "authorization.singOut": "Salir",
+  "authorization.signIn": "Acceso",
+
+  "footer.copyright": "Copyright",
+
+  "beer.dateOfFirstBrew": "Fecha de la primera cerveza",
+  "beer.ingredients": "Ingredientes",
+  "beer.malt": "Malta",
+  "beer.hops": "Brincar",
+  "beer.yeast": "Levadura",
+
+  "comments.title": "Reseñas",
+  "comments.noReviews": "Sin reseñas",
+  "comments.leaveFeedback": "Deja un comentario",
+  "comments.text": "Texto",
+  "comments.name": "Nombre",
+  "comments.send": "Enviar",
+
+  "listOrder.title": "Su pedido",
+  "listOrder.beer": "Cerveza",
+
+  "profile.title": "Perfil",
+  "profile.name": "Nombre",
+  "profile.eMail": "Correo electrónico",
+  "profile.telephone": "Teléfono",
+
+  "test.forTheTest": "Para la prueba",
+  "test.text": "no funciona github pages, solo localmente",
+
+  "basket.clearBasket": "Papelera vacía",
+  "basket.checkout": "Diseño",
+  "basket.cartIsEmpty": "El carrito esta vacío!",
+
+  "formPage.buyerData": "Datos del comprador",
+  "formPage.addressOfTheRecipient": "Dirección del destinatario",
+  "formPage.comments": "Comentarios",
+  "formPage.paymentMethods": "Métodos de pago",
+  "formPage.cashPayment": "Dinero",
+  "formPage.agreeProcessingPersonalData": "Acepto el tratamiento de mis datos personales",
+  "formPage.placeAnOrder": "Haz un pedido",
+  "formPage.orderCompleted": "Se procesa el pedido",
+  "formPage.signIn": "Acceso",
+  "formPage.placeOrder": "encargar",
+
+  "button.removeFromCart": "Quitar del carrito",
+  "button.addToCart": "Añadir al carrito",
+
+  "input.name": "Nombre",
+  "input.eMail": "E-mail",
+  "input.numberPattern": "+34 (XXX) XXX-XXX",
+  "input.country": "Un país",
+  "input.city": "Ciudad",
+  "input.street": "Calle",
+  "input.house": "Casa",
+  "input.apartment": "Departamento"
+}

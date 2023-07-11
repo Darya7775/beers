@@ -1,13 +1,15 @@
 import React from "react";
+import useTranslate from "../../../hooks/use-translate";
 import * as S from "./style";
 
 const Test: React.FC = () => {
+  const {t} = useTranslate();
   return(
     <S.TestContainer>
-      For the test
-      <div>Login: test_1</div>
-      <div>Password: 123456</div>
-      does not work in github pages, only locally
+      {t("test.forTheTest")}
+      <div>{t("login")}: test_1</div>
+      <div>{t("password")}: 123456</div>
+      {t("test.text")}
     </S.TestContainer>
   );
 }

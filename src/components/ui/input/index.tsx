@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import useTranslate from "../../../hooks/use-translate";
 import * as S from "./style";
 
-export const InputName = () => {
+export const InputName: React.FC = () => {
+  const {t} = useTranslate();
   const [ name, setName ] = useState('');
   const [ classInput, setClassInput ] = useState('');
 
-  const onNameChange = e => setName(e.target.value);
+  const onNameChange = (e: React.ChangeEvent<HTMLInputElement> ) => setName(e.target.value);
 
   const onBlurInput = () => {
     if(name.length < 2) {
@@ -23,7 +25,7 @@ export const InputName = () => {
         type="text"
         id="name"
         name="name"
-        placeholder="Name"
+        placeholder={t("input.name")}
         value={name}
         onChange={onNameChange}
         onBlur={onBlurInput}
@@ -33,11 +35,12 @@ export const InputName = () => {
   );
 };
 
-export const InputMail = () => {
+export const InputMail: React.FC = () => {
+  const {t} = useTranslate();
   const [ mail, setMail ] = useState('');
   const [ classInput, setClassInput ] = useState('');
 
-  const onMailChange = e => setMail(e.target.value);
+  const onMailChange = (e: React.ChangeEvent<HTMLInputElement> ) => setMail(e.target.value);
 
   const onBlurInput = () => {
     if(mail.length < 2) {
@@ -55,7 +58,7 @@ export const InputMail = () => {
         type="text"
         id="e-mail"
         name="e-mail"
-        placeholder="E-mail"
+        placeholder={t("input.eMail")}
         value={mail}
         onChange={onMailChange}
         onBlur={onBlurInput}
@@ -65,11 +68,12 @@ export const InputMail = () => {
   );
 };
 
-export const InputTel = () => {
+export const InputTel: React.FC = () => {
+  const {t} = useTranslate();
   const [ tel, setTel ] = useState("");
   const [ classInput, setClassInput ] = useState("");
 
-  const onTelChange = e => setTel(e.target.value);
+  const onTelChange = (e: React.ChangeEvent<HTMLInputElement> ) => setTel(e.target.value);
 
   const onBlurInput = () => {
     if(tel.length < 16) {
@@ -87,7 +91,7 @@ export const InputTel = () => {
         type="tel"
         id="tel"
         name="tel"
-        placeholder="+7(999)999-99-99"
+        placeholder={t("input.numberPattern")}
         value={tel}
         onChange={onTelChange}
         onBlur={onBlurInput}
@@ -96,11 +100,12 @@ export const InputTel = () => {
   );
 };
 
-export const InputContry = () => {
+export const InputContry: React.FC = () => {
+  const {t} = useTranslate();
   const [ country, setCountry ] = useState("");
   const [ classInput, setClassInput ] = useState("");
 
-  const onCountryChange = e => setCountry(e.target.value);
+  const onCountryChange = (e: React.ChangeEvent<HTMLInputElement> ) => setCountry(e.target.value);
 
   const onBlurInput = () => {
     if(country.length < 3) {
@@ -118,7 +123,7 @@ export const InputContry = () => {
         type="text"
         id="country"
         name="country"
-        placeholder="Country"
+        placeholder={t("input.country")}
         value={country}
         onChange={onCountryChange}
         onBlur={onBlurInput}
@@ -127,11 +132,12 @@ export const InputContry = () => {
   );
 };
 
-export const InputCity = () => {
+export const InputCity: React.FC = () => {
+  const {t} = useTranslate();
   const [ city, setCity ] = useState("");
   const [ classInput, setClassInput ] = useState("");
 
-  const onCityChange = e => setCity(e.target.value);
+  const onCityChange = (e: React.ChangeEvent<HTMLInputElement> ) => setCity(e.target.value);
 
   const onBlurInput = () => {
     if(city.length < 3) {
@@ -149,7 +155,7 @@ export const InputCity = () => {
         type="text"
         id="city"
         name="city"
-        placeholder="City"
+        placeholder={t("input.city")}
         value={city}
         onChange={onCityChange}
         onBlur={onBlurInput}
@@ -158,11 +164,12 @@ export const InputCity = () => {
   );
 };
 
-export const InputStreet = () => {
+export const InputStreet: React.FC = () => {
+  const {t} = useTranslate();
   const [ street, setStreet ] = useState("");
   const [ classInput, setClassInput ] = useState("");
 
-  const onStreetChange = e => setStreet(e.target.value);
+  const onStreetChange = (e: React.ChangeEvent<HTMLInputElement> ) => setStreet(e.target.value);
 
   const onBlurInput = () => {
     if(street.length < 2) {
@@ -180,7 +187,7 @@ export const InputStreet = () => {
         type="text"
         id="street"
         name="street"
-        placeholder="Street"
+        placeholder={t("input.street")}
         value={street}
         onChange={onStreetChange}
         onBlur={onBlurInput}
@@ -189,11 +196,12 @@ export const InputStreet = () => {
   );
 };
 
-export const InputHouse = () => {
+export const InputHouse: React.FC = () => {
+  const {t} = useTranslate();
   const [ house, setHouse ] = useState("");
   const [ classInput, setClassInput ] = useState("");
 
-  const onHouseChange = e => setHouse(e.target.value);
+  const onHouseChange = (e: React.ChangeEvent<HTMLInputElement> ) => setHouse(e.target.value);
 
   const onBlurInput = () => {
     if(house.length < 2) {
@@ -211,7 +219,7 @@ export const InputHouse = () => {
         type="text"
         id="house"
         name="house"
-        placeholder="House"
+        placeholder={t("input.house")}
         value={house}
         onChange={onHouseChange}
         onBlur={onBlurInput}
@@ -220,11 +228,12 @@ export const InputHouse = () => {
   );
 };
 
-export const InputApartment = () => {
+export const InputApartment: React.FC = () => {
+  const {t} = useTranslate();
   const [ apartment, setApartment ] = useState("");
   const [ classInput, setClassInput ] = useState("");
 
-  const onApartmentChange = e => setApartment(e.target.value);
+  const onApartmentChange = (e: React.ChangeEvent<HTMLInputElement> ) => setApartment(e.target.value);
 
   const onBlurInput = () => {
     if(apartment.length < 2) {
@@ -242,7 +251,7 @@ export const InputApartment = () => {
         type="text"
         id="apartment"
         name="apartment"
-        placeholder="Apartment"
+        placeholder={t("input.apartment")}
         value={apartment}
         onChange={onApartmentChange}
         onBlur={onBlurInput} />

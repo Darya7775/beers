@@ -1,0 +1,65 @@
+{
+  "title": "Bier",
+  "login": "Log in",
+  "password": "Wachtwoord",
+  "quantity": "Hoeveelheid",
+  "price": "Prijs",
+  "alcohol": "Alcohol",
+  "total": "Totaal",
+
+  "authorization.singOut": "Uitgaan",
+  "authorization.signIn": "Log in",
+
+  "footer.copyright": "Copyright",
+
+  "beer.dateOfFirstBrew": "Datum eerste brouwsel",
+  "beer.ingredients": "Ingrediënten",
+  "beer.malt": "Mout",
+  "beer.hops": "Hop",
+  "beer.yeast": "Gist",
+
+  "comments.title": "Recensies",
+  "comments.noReviews": "Geen beoordelingen",
+  "comments.leaveFeedback": "Feedback achterlaten",
+  "comments.text": "Tekst",
+  "comments.name": "Naam",
+  "comments.send": "Versturen",
+
+  "listOrder.title": "Jouw bestelling",
+  "listOrder.beer": "Bier",
+
+  "profile.title": "Profiel",
+  "profile.name": "Naam",
+  "profile.eMail": "E-mail",
+  "profile.telephone": "Telefoon",
+
+  "test.forTheTest": "Voor de test",
+  "test.text": "werkt niet door github pages, alleen plaatselijk",
+
+  "basket.clearBasket": "Lege prullenbak",
+  "basket.checkout": "Ontwerp",
+  "basket.cartIsEmpty": "Winkelwagen is leeg!",
+
+  "formPage.buyerData": "Gegevens koper",
+  "formPage.addressOfTheRecipient": "Adres van de ontvanger",
+  "formPage.comments": "Opmerkingen",
+  "formPage.paymentMethods": "Betaalmethoden",
+  "formPage.cashPayment": "Contant geld",
+  "formPage.agreeProcessingPersonalData": "Ik ga akkoord met de verwerking van mijn persoonlijke gegevens",
+  "formPage.placeAnOrder": "Een bestelling plaatsen",
+  "formPage.orderCompleted": "Bestelling wordt verwerkt",
+  "formPage.signIn": "Log in",
+  "formPage.placeOrder": "een bestelling plaatsen",
+
+  "button.removeFromCart": "Verwijderen uit winkelwagen",
+  "button.addToCart": "Voeg toe aan winkelwagen",
+
+  "input.name": "Naam",
+  "input.eMail": "E-mail",
+  "input.numberPattern": "+31 XX XXX-XXXX",
+  "input.country": "Een land",
+  "input.city": "Stad",
+  "input.street": "Straat",
+  "input.house": "Huis",
+  "input.apartment": "Appartement"
+}

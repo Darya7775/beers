@@ -1,0 +1,65 @@
+{
+  "title": "Bière",
+  "login": "Connexion",
+  "password": "Mot de passe",
+  "quantity": "Quantité",
+  "price": "Prix",
+  "alcohol": "Alcool",
+  "total": "Total",
+
+  "authorization.singOut": "Sortir",
+  "authorization.signIn": "Connexion",
+
+  "footer.copyright": "Copyright",
+
+  "beer.dateOfFirstBrew": "Date du premier brassage",
+  "beer.ingredients": "Ingrédients",
+  "beer.malt": "Malt",
+  "beer.hops": "Houblon",
+  "beer.yeast": "Levure",
+
+  "comments.title": "Commentaires",
+  "comments.noReviews": "Aucun avis",
+  "comments.leaveFeedback": "Laisser les commentaires",
+  "comments.text": "Texte",
+  "comments.name": "Nom",
+  "comments.send": "Envoyer",
+
+  "listOrder.title": "Votre commande",
+  "listOrder.beer": "Bière",
+
+  "profile.title": "Profil",
+  "profile.name": "Nom",
+  "profile.eMail": "E-mail",
+  "profile.telephone": "Téléphone",
+
+  "test.forTheTest": "Pour le test",
+  "test.text": "ne fonctionne pas à travers github pages, seulement localement",
+
+  "basket.clearBasket": "Poubelle vide",
+  "basket.checkout": "Conception",
+  "basket.cartIsEmpty": "Le panier est vide!",
+
+  "formPage.buyerData": "Données de l'acheteur",
+  "formPage.addressOfTheRecipient": "Adresse du destinataire",
+  "formPage.comments": "Commentaires",
+  "formPage.paymentMethods": "Méthodes de payement",
+  "formPage.cashPayment": "Espèces",
+  "formPage.agreeProcessingPersonalData": "J'accepte le traitement de mes données personnelles",
+  "formPage.placeAnOrder": "Commander",
+  "formPage.orderCompleted": "La commande est traitée",
+  "formPage.signIn": "Connexion",
+  "formPage.placeOrder": "passer une commande",
+
+  "button.removeFromCart": "Retirer du panier",
+  "button.addToCart": "Ajouter au panier",
+
+  "input.name": "Nom",
+  "input.eMail": "E-mail",
+  "input.numberPattern": "+33-XX-XX-XX-XX-XX",
+  "input.country": "Un pays",
+  "input.city": "Ville",
+  "input.street": "Rue",
+  "input.house": "Loger",
+  "input.apartment": "Appartement"
+}

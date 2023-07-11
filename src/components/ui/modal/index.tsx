@@ -1,7 +1,11 @@
 import React from "react";
 import {StyleModal, StyleFrame} from "./style";
 
-function Modal(props) {
+interface Props {
+  children: JSX.Element
+};
+
+const Modal: React.FC<Props> = (props: Props) => {
   return(
     <StyleModal>
       <StyleFrame>

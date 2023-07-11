@@ -15,7 +15,7 @@ const Textarea: React.FC<Props> = (props: Props) => {
   const [value, setValue] = useState(props.value);
 
   const onChangeDebounce = useCallback(
-    debounce(value => props.onChangeText(value), 600),
+    debounce(value => props.onChangeText(value), 500),
     [props.onChangeText]
   );
 

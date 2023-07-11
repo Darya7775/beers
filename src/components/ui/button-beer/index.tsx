@@ -3,7 +3,7 @@ import useAppSelector from "../../../hooks/use-selector";
 import useAppDispatch from "../../../hooks/use-dispatch";
 import useTranslate from "../../../hooks/use-translate";
 import { removeProduct } from "../../../features/basket-slice";
-import { selectBeerById, addToBasket, removeFromBasket } from "../../../features/beers-slice";
+import { addToBasketOneBeer, removeFromBasketOneBeer } from "../../../features/beers-slice";
 import * as S from "./style";
 
 interface Props {
@@ -19,7 +19,7 @@ export const ButtonActive: React.FC<Props> = ({ beerId, classB }: Props) => {
       className={classB}
       type="button"
       onClick={() => {
-        dispatch(removeFromBasket(beerId));
+        dispatch(removeFromBasketOneBeer(beerId));
         dispatch(removeProduct(beerId));
         const basket = JSON.parse(localStorage.getItem("basket") as string);
         delete basket[beerId];
@@ -33,18 +33,10 @@ interface Options {
   [key: string]: object
 };
 
-interface Beer {
-  image_url: string,
-  name: string,
-  isCart: boolean,
-  abv: number,
-  ibu: number
-}
-
 export const Button: React.FC<Props> = ({ beerId, classB }: Props) => {
   const {t} = useTranslate();
   const dispatch = useAppDispatch();
-  const beer = useAppSelector(state => selectBeerById(state, beerId))  as Beer;
+  const beer = useAppSelector(state => state.beers.oneBeer);
 
   const addLocalStorage = (beerId: number) => {
     if(!localStorage.getItem("basket")) {
@@ -63,7 +55,7 @@ export const Button: React.FC<Props> = ({ beerId, classB }: Props) => {
       className={classB}
       type="button"
       onClick={() => {
-        dispatch(addToBasket(beerId));
+        dispatch(addToBasketOneBeer(beerId));
         addLocalStorage(beerId);
       }}>{t("button.addToCart")}
     </S.ButtonStyle>

@@ -1,4 +1,5 @@
 import React from "react";
+import useTranslate from "../../../hooks/use-translate";
 import Form from "../form";
 import InputLogin from "../../ui/input-login";
 import Textarea from "../../ui/textarea";
@@ -15,10 +16,12 @@ interface Props {
 };
 
 const Comments: React.FC<Props> = (props: Props) => {
+  const {t} = useTranslate();
+  console.log("comments")
 
   return(
     <S.CommentsStyle>
-      <S.CommentsTitle>Reviews</S.CommentsTitle>
+      <S.CommentsTitle>{t("comments.title")}</S.CommentsTitle>
       <S.CommentsList>
         {props.comments.length
           ? props.comments.map((comment, index) => (
@@ -27,15 +30,15 @@ const Comments: React.FC<Props> = (props: Props) => {
                 <p>{comment.body}</p>
               </S.CommentsItem>
             ))
-          : <li>No comments</li>}
-          <Form onSubmit={props.onSubmit} textButton="Send">
-            <>
-              <h2>Leave feedback</h2>
-              <InputLogin type="text" value={props.name} text="Name" onChange={props.onChangeName}/>
-              <Textarea value={props.text} onChangeText={props.onChangeText} placeholder="Text" />
-            </>
-          </Form>
+          : <li>{t("comments.noReviews")}</li>}
       </S.CommentsList>
+      <Form onSubmit={props.onSubmit} textButton={t("comments.send")}>
+        <>
+          <h2>{t("comments.leaveFeedback")}</h2>
+          <InputLogin type="text" value={props.name} text={t("comments.name")} onChange={props.onChangeName}/>
+          <Textarea value={props.text} onChangeText={props.onChangeText} placeholder={t("comments.text")} />
+        </>
+      </Form>
     </S.CommentsStyle>
   );
 };

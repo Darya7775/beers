@@ -9,6 +9,7 @@ type OneBeer = {
     image_url: string,
     name: string,
     abv: number,
+    ibu: number,
     first_brewed: string,
     description: string,
     ingredients: {
@@ -52,6 +53,7 @@ const initialState: ExtendedEntityAdapterState = {
     image_url: "",
     name: "",
     abv: 0,
+    ibu: 0,
     first_brewed: "",
     description: "",
     ingredients: {

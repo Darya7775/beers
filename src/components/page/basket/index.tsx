@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAppSelector from "../../../hooks/use-selector";
 import useAppDispatch from "../../../hooks/use-dispatch";
+import useTranslate from "../../../hooks/use-translate";
 import CardBeerBasket from "../../containers/card-beer-basket";
 import { deletingAllFromTheBasket } from "../../../features/beers-slice";
 import { addProducts, clearBasket } from "../../../features/basket-slice";
@@ -18,6 +19,7 @@ interface Beer {
 };
 
 const Basket: React.FC = () => {
+  const {t} = useTranslate();
   const dispatch = useAppDispatch();
   const beersStore = useAppSelector(state => state.basket.ids);
   const [ count, setCount ] = useState(0);
@@ -36,7 +38,7 @@ const Basket: React.FC = () => {
   return(
     <S.BasketStyle>
       <S.BasketContainer>
-        <S.BasketTotal>Total {count}</S.BasketTotal>
+        <S.BasketTotal>{t("total")} {count}</S.BasketTotal>
           {beersStore.length ?
             <>
               <S.BasketListStyle>
@@ -55,14 +57,14 @@ const Basket: React.FC = () => {
                     dispatch(clearBasket());
                     setCount(beersStore.length);
                   }}>
-                  Clear basket
+                  {t("basket.clearBasket")}
                 </S.ButtonClear>
-                <S.LinkForm to="/form">Checkout</S.LinkForm>
+                <S.LinkForm to="/form">{t("basket.checkout")}</S.LinkForm>
               </S.WrapButtons>
             </>
             :
               <p>
-                Сart is empty!
+                {t("basket.cartIsEmpty")}
               </p>
           }
       </S.BasketContainer>

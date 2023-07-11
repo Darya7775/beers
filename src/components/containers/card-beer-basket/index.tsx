@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useAppSelector from "../../../hooks/use-selector";
 import useAppDispatch from "../../../hooks/use-dispatch";
+import useTranslate from "../../../hooks/use-translate";
 import { removeFromBasket } from "../../../features/beers-slice";
 import { incrementBeers, decrementBeers, updatePrice, removeProduct, selectBeerBasketById } from "../../../features/basket-slice";
 import * as S from "./style";
@@ -22,6 +23,7 @@ interface Beer {
 }
 
 const CardBeerBasket: React.FC<Props> = (props: Props) => {
+  const {t} = useTranslate();
   const dispatch = useAppDispatch();
   const beer = useAppSelector(state => selectBeerBasketById(state, props.beerId)) as Beer;
 
@@ -51,9 +53,9 @@ const CardBeerBasket: React.FC<Props> = (props: Props) => {
     <S.CardBeerItem>
       <S.CardBeerImg src={beer.image_url} alt={beer.name} width={75} height={200}/>
       <S.CardBeerTitle>{beer.name}</S.CardBeerTitle>
-      <S.CardBeerAlc>Alc.: {beer.abv} %</S.CardBeerAlc>
+      <S.CardBeerAlc>{t("alcohol")}: {beer.abv} %</S.CardBeerAlc>
       <S.CardBeerWparCount>
-        <S.CardBeerTitleCount>Quantity</S.CardBeerTitleCount>
+        <S.CardBeerTitleCount>{t("quantity")}</S.CardBeerTitleCount>
         <S.CardBeerWparButtons>
           <S.CardBeerButton
             type="button"
@@ -76,7 +78,7 @@ const CardBeerBasket: React.FC<Props> = (props: Props) => {
           >+</S.CardBeerButton>
         </S.CardBeerWparButtons>
       </S.CardBeerWparCount>
-      <S.CardBeerPrice>Price: {beer.price}$</S.CardBeerPrice>
+      <S.CardBeerPrice>{t("price")}: {beer.price}$</S.CardBeerPrice>
       <S.CardBeerDelete type="button" aria-label="Delete"
         onClick={() => {
           dispatch(removeFromBasket(beer.id));

@@ -2,7 +2,14 @@ import React, {useState, useCallback, useLayoutEffect} from "react";
 import debounce from "lodash.debounce";
 import * as S from "./style";
 
-function InputLogin(props) {
+interface Props {
+  value: string,
+  onChange: (value: string) => void,
+  text: string,
+  type: string
+};
+
+const InputLogin: React.FC<Props> = (props: Props) => {
   // Внутренний стейт для быстрого отображения ввода
   const [value, setValue] = useState(props.value);
 
@@ -12,7 +19,7 @@ function InputLogin(props) {
   );
 
   // Обработчик изменений в поле
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     onChangeDebounce(e.target.value);
   };
